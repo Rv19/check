@@ -1,0 +1,99 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastasia"
+        },
+        "networkInterfaceName": {
+            "value": "fwd-ci-linagt02555"
+        },
+        "networkSecurityGroupName": {
+            "value": "fwd-ci-linagt02-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": [
+                {
+                    "name": "SSH",
+                    "properties": {
+                        "priority": 300,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "22"
+                    }
+                }
+            ]
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/97482127-96c4-4162-bf04-0492ca14b310/resourceGroups/fwd-ci/providers/Microsoft.Network/virtualNetworks/fwd-ci-vnet"
+        },
+        "publicIpAddressName": {
+            "value": "fwdcilinagt02ip868"
+        },
+        "publicIpAddressType": {
+            "value": "Static"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "virtualMachineName": {
+            "value": "fwd-ci-linagt02"
+        },
+        "virtualMachineRG": {
+            "value": "fwd-ci"
+        },
+        "osDiskType": {
+            "value": "StandardSSD_LRS"
+        },
+        "dataDisks": {
+            "value": [
+                {
+                    "lun": 0,
+                    "createOption": "attach",
+                    "caching": "None",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "fwd-ci-linagt02_DataDisk_0",
+                    "storageAccountType": null,
+                    "diskSizeGB": null
+                }
+            ]
+        },
+        "dataDiskResources": {
+            "value": [
+                {
+                    "name": "fwd-ci-linagt02_DataDisk_0",
+                    "sku": "StandardSSD_LRS",
+                    "properties": {
+                        "diskSizeGB": 128,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                }
+            ]
+        },
+        "virtualMachineSize": {
+            "value": "Standard_B2ms"
+        },
+        "adminUsername": {
+            "value": "fwdadmin"
+        },
+        "adminPassword": {
+            "value": "fwdlinPass@1"
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "fwdcidiag02"
+        },
+        "diagnosticsStorageAccountId": {
+            "value": "/subscriptions/97482127-96c4-4162-bf04-0492ca14b310/resourceGroups/fwd-ci/providers/Microsoft.Storage/storageAccounts/fwdcidiag02"
+        }
+    }
+}
